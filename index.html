@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VigneshGen - Professional Services</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #0f4c75;
+            --highlight: #3282b8;
+            --light: #bbe1fa;
+            --text-dark: #2c3e50;
+            --text-light: #7f8c8d;
+            --bg-light: #f8f9fa;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background: var(--white);
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Header Styles */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+            z-index: 1000;
+            animation: slideDown 0.6s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 2rem;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--highlight);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--highlight);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(187, 225, 250, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(50, 130, 184, 0.1) 0%, transparent 50%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .hero .subtitle {
+            font-size: 1.4rem;
+            color: var(--light);
+            font-weight: 300;
+            margin-bottom: 2.5rem;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--highlight);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(50, 130, 184, 0.3);
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(50, 130, 184, 0.4);
+            background: var(--light);
+            color: var(--primary);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--highlight);
+            margin: 1.5rem auto;
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 1.15rem;
+            max-width: 700px;
+            margin: 0 auto 4rem;
+        }
+
+        /* About Section */
+        #about {
+            background: var(--bg-light);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-image {
+            position: relative;
+            height: 400px;
+            background: linear-gradient(135deg, var(--accent), var(--highlight));
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            height: 80%;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: ripple 3s ease-in-out infinite;
+        }
+
+        @keyframes ripple {
+            0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+            100% { transform: translate(-50%, -50%) scale(1.5); opacity: 0; }
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--highlight));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* Leadership Section */
+        #leadership {
+            background: var(--bg-light);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .team-member {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+        }
+
+        .member-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), var(--highlight));
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--white);
+            font-weight: 700;
+        }
+
+        .team-member h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .team-member .role {
+            color: var(--highlight);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-member .education {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .team-member .bio {
+            color: var(--text-dark);
+            line-height: 1.7;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .contact-card {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            padding: 2.5rem;
+            border-radius: 15px;
+            color: var(--white);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-card p {
+            color: var(--light);
+            line-height: 1.7;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: var(--light);
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-tagline {
+            color: var(--highlight);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid,
+            .team-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scroll Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">VigneshGen</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#leadership">Leadership</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Innovative Solutions<br>for Tomorrow</h1>
+            <p class="subtitle">Transforming Ideas into Exceptional Digital Experiences</p>
+            <a href="#contact" class="cta-button">Get Started</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2 class="section-title">About Us</h2>
+        <p class="section-subtitle">We are dedicated to delivering cutting-edge technology solutions that drive business success</p>
+        <div class="about-content">
+            <div class="about-text fade-in">
+                <p>VigneshGen is a forward-thinking technology company specializing in innovative software solutions and digital transformation services. Our mission is to empower businesses through technology, creativity, and strategic thinking.</p>
+                <p>With a team of passionate professionals and industry experts, we deliver custom solutions that address complex challenges and create lasting value for our clients. Our approach combines technical excellence with a deep understanding of business needs.</p>
+                <p>We believe in building long-term partnerships and delivering solutions that not only meet current requirements but also position our clients for future success in an ever-evolving digital landscape.</p>
+            </div>
+            <div class="about-image fade-in"></div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <h2 class="section-title">Our Services</h2>
+        <p class="section-subtitle">Comprehensive solutions tailored to your unique business needs</p>
+        <div class="services-grid">
+            <div class="service-card fade-in">
+                <div class="service-icon">☁️</div>
+                <h3>Cloud Solutions</h3>
+                <p>Cloud architecture design, migration, and management to enhance scalability and reduce infrastructure costs.</p>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-icon">⛓️</div>
+                <h3>Blockchain Consulting</h3>
+                <p>Expert guidance on blockchain technology implementation, smart contracts, and decentralized solutions for your business.</p>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-icon">💻</div>
+                <h3>Software Development</h3>
+                <p>Custom software solutions built with modern technologies, from web applications to enterprise systems that scale with your business.</p>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-icon">🔧</div>
+                <h3>System Integration</h3>
+                <p>Seamless integration of diverse platforms and technologies to create unified, efficient business ecosystems.</p>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-icon">📊</div>
+                <h3>Observability & Monitoring</h3>
+                <p>Comprehensive monitoring solutions and observability platforms to ensure system health, performance, and reliability.</p>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-icon">🛡️</div>
+                <h3>Technical Support</h3>
+                <p>Comprehensive support and maintenance services ensuring optimal performance and minimal downtime.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership Section -->
+    <section id="leadership">
+        <h2 class="section-title">Leadership Team</h2>
+        <p class="section-subtitle">Experienced professionals driving innovation and excellence</p>
+        <div class="team-grid">
+            <div class="team-member fade-in">
+                <div class="member-avatar">VG</div>
+                <h3>Vigneshwar</h3>
+                <p class="role">Founder & CEO</p>
+                <p class="education">Technology Leadership</p>
+                <p class="bio">Bringing visionary leadership and technical expertise to drive innovation and deliver exceptional solutions for our clients.</p>
+            </div>
+            <div class="team-member fade-in">
+                <div class="member-avatar">VB</div>
+                <h3>Vidya BJ</h3>
+                <p class="role">Director</p>
+                <p class="education">Strategic Operations</p>
+                <p class="bio">Contributing extensive experience in operations management and strategic planning to ensure organizational excellence.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title">Get In Touch</h2>
+        <p class="section-subtitle">Let's discuss how we can help transform your business</p>
+        <div class="contact-grid">
+            <div class="contact-card fade-in">
+                <h3>💼 Business Inquiries</h3>
+                <p>Interested in partnering with us? We're always open to exploring new opportunities and collaborations.</p>
+            </div>
+            <div class="contact-card fade-in">
+                <h3>🚀 Start a Project</h3>
+                <p>Ready to bring your ideas to life? Contact us to discuss your project requirements and goals.</p>
+            </div>
+            <div class="contact-card fade-in">
+                <h3>💬 General Support</h3>
+                <p>Have questions about our services? Our team is here to provide the information you need.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 VigneshGen. All rights reserved.</p>
+        <p class="footer-tagline">Innovation • Excellence • Partnership</p>
+    </footer>
+
+    <script>
+        // Smooth scroll animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Mobile menu toggle (if needed in future)
+        // Add hamburger menu functionality here
+    </script>
+</body>
+</html>
